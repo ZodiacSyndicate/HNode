@@ -1,0 +1,16 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    "node_modules/**/node_modules",
+    "dist",
+    "config",
+    ".gitingnore",
+    ".git",
+    "client"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "verbose": true,
+  "ext": "js"
+}
