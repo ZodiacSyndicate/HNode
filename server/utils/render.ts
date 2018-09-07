@@ -25,7 +25,10 @@ export const render = async (bundle: any, template: string, ctx: Context) => {
     // material-ui服务端渲染相关
     const sheetsRegistry = new SheetsRegistry()
     const sheetsManager = new Map()
-    const generateClassName = createGenerateClassName()
+    const generateClassName = createGenerateClassName({
+      dangerouslyUseGlobalCSS: false,
+      productionPrefix: 'HNode'
+    })
     const theme = createMuiTheme({
       palette: {
         primary: blue,
@@ -46,7 +49,7 @@ export const render = async (bundle: any, template: string, ctx: Context) => {
     )
 
     // 渲染成string
-    const content = ReactDOMServer.renderToString(app)
+    const content = ReactDOMServer.renderToStaticMarkup(app)
 
     if (ctx.session.user) {
       const { loginName, avatarUrl, id } = ctx.session.user

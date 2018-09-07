@@ -9,6 +9,7 @@
 
 # production
 /dist
+/bundle
 
 # misc
 .DS_Store

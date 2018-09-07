@@ -5,6 +5,6 @@ import { join } from 'path'
 // 静态资源
 const app = new Koa()
 
-app.use(serve(join(__dirname, '../dist')))
+app.use(serve(join(__dirname, '../../dist')))
 
 export default app

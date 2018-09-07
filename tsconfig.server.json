@@ -5,7 +5,7 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": false,
-    "outDir": "serverdist",
+    "outDir": "bundle",
     "rootDir": "server",
     "baseUrl": ".",
     "paths": {

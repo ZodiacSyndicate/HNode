@@ -4,8 +4,9 @@ import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
+import { JssProvider } from 'react-jss'
 
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from '@material-ui/core/styles'
 import { blue, pink } from '@material-ui/core/colors'
 
 import App from '@/pages/App'
@@ -18,6 +19,11 @@ const theme = createMuiTheme({
     secondary: pink,
     type: 'light'
   }
+})
+
+const generateClassName = createGenerateClassName({
+  dangerouslyUseGlobalCSS: false,
+  productionPrefix: 'HNode',
 })
 
 const history = createBrowserHistory()
@@ -46,9 +52,11 @@ const render = (Component: React.ComponentType<any>) => (
   <AppContainer>
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <MuiThemeProvider theme={theme}>
-          <Component />
-        </MuiThemeProvider>
+        <JssProvider generateClassName={generateClassName}>
+          <MuiThemeProvider theme={theme}>
+            <Component />
+          </MuiThemeProvider>
+        </JssProvider>
       </ConnectedRouter>
     </Provider>
   </AppContainer>,
